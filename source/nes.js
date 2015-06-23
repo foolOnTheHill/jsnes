@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var JSNES = function(opts) {
+var JSNES = function(socket, opts) {
     this.opts = {
         ui: JSNES.DummyUI,
         swfPath: 'lib/',
@@ -25,7 +25,7 @@ var JSNES = function(opts) {
         fpsInterval: 500, // Time between updating FPS in ms
         showDisplay: true,
 
-        emulateSound: false,
+        emulateSound: true,
         sampleRate: 44100, // Sound sample rate in hz
         
         CPU_FREQ_NTSC: 1789772.5, //1789772.72727272d;
@@ -42,12 +42,14 @@ var JSNES = function(opts) {
     
     this.frameTime = 1000 / this.opts.preferredFrameRate;
     
+    this.socket = socket;
+
     this.ui = new this.opts.ui(this);
     this.cpu = new JSNES.CPU(this);
     this.ppu = new JSNES.PPU(this);
     this.papu = new JSNES.PAPU(this);
     this.mmap = null; // set in loadRom()
-    this.keyboard = new JSNES.Keyboard();
+    this.keyboard = new JSNES.Keyboard(this.socket);
     
     this.ui.updateStatus("Ready to load a ROM.");
 };

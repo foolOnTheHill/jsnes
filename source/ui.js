@@ -36,7 +36,7 @@ if (typeof jQuery !== 'undefined') {
                  * Create UI
                  */
                 self.root = $('<div></div>');
-                self.screen = $('<canvas class="nes-screen" width="256" height="240"></canvas>').appendTo(self.root);
+                self.screen = $('<canvas class="nes-screen centered" width="256" height="240"></canvas>').appendTo(self.root);
                 
                 if (!self.screen[0].getContext) {
                     parent.html("Your browser doesn't support the <code>&lt;canvas&gt;</code> tag. Try Google Chrome, Safari, Opera or Firefox!");
@@ -44,14 +44,13 @@ if (typeof jQuery !== 'undefined') {
                 }
                 
                 self.romContainer = $('<div class="nes-roms"></div>').appendTo(self.root);
-                self.romSelect = $('<select></select>').appendTo(self.romContainer);
+                self.romSelect = $('<select class="flat match-parent"></select>').appendTo(self.romContainer);
                 
                 self.controls = $('<div class="nes-controls"></div>').appendTo(self.root);
                 self.buttons = {
-                    pause: $('<input type="button" value="pause" class="nes-pause" disabled="disabled">').appendTo(self.controls),
-                    restart: $('<input type="button" value="restart" class="nes-restart" disabled="disabled">').appendTo(self.controls),
-                    sound: $('<input type="button" value="enable sound" class="nes-enablesound">').appendTo(self.controls),
-                    zoom: $('<input type="button" value="zoom in" class="nes-zoom">').appendTo(self.controls)
+                    pause: $('<input type="button" value="pause" class="nes-pause flat" disabled="disabled">').appendTo(self.controls),
+                    restart: $('<input type="button" value="restart" class="nes-restart flat" disabled="disabled">').appendTo(self.controls),
+                    sound: $('<input type="button" value="enable sound" class="nes-enablesound flat">').appendTo(self.controls),
                 };
                 self.status = $('<p class="nes-status">Booting up...</p>').appendTo(self.root);
                 self.root.appendTo(parent);
@@ -95,7 +94,7 @@ if (typeof jQuery !== 'undefined') {
                 });
         
                 self.zoomed = false;
-                self.buttons.zoom.click(function() {
+                self.zoom = function() {
                     if (self.zoomed) {
                         self.screen.animate({
                             width: '256px',
@@ -106,13 +105,13 @@ if (typeof jQuery !== 'undefined') {
                     }
                     else {
                         self.screen.animate({
-                            width: '512px',
-                            height: '480px'
+                            width: '768px',
+                            height: '720px'
                         });
                         self.buttons.zoom.attr("value", "zoom out");
                         self.zoomed = true;
                     }
-                });
+                };
                 
                 /*
                  * Lightgun experiments with mouse
@@ -208,6 +207,7 @@ if (typeof jQuery !== 'undefined') {
                             self.nes.loadRom(data);
                             self.nes.start();
                             self.enable();
+                            self.zoom();
                         }
                     });
                 },

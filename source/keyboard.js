@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // Keyboard events are bound in the UI
-JSNES.Keyboard = function() {
+JSNES.Keyboard = function(socket) {
     var i;
     
     this.keys = {
@@ -39,6 +39,8 @@ JSNES.Keyboard = function() {
     for (i = 0; i < this.state2.length; i++) {
         this.state2[i] = 0x40;
     }
+
+    this.socket = socket;
 };
 
 JSNES.Keyboard.prototype = {
@@ -54,17 +56,21 @@ JSNES.Keyboard.prototype = {
             case 37: this.state1[this.keys.KEY_LEFT] = value; break;   // Left
             case 39: this.state1[this.keys.KEY_RIGHT] = value; break;  // Right
 
-            case 103: this.state2[this.keys.KEY_A] = value; break;     // Num-7
-            case 105: this.state2[this.keys.KEY_B] = value; break;     // Num-9
-            case 99: this.state2[this.keys.KEY_SELECT] = value; break; // Num-3
-            case 97: this.state2[this.keys.KEY_START] = value; break;  // Num-1
-            case 104: this.state2[this.keys.KEY_UP] = value; break;    // Num-8
-            case 98: this.state2[this.keys.KEY_DOWN] = value; break;   // Num-2
-            case 100: this.state2[this.keys.KEY_LEFT] = value; break;  // Num-4
-            case 102: this.state2[this.keys.KEY_RIGHT] = value; break; // Num-6
+            case 55: this.state2[this.keys.KEY_A] = value; break;     // Num-7
+            case 57: this.state2[this.keys.KEY_B] = value; break;     // Num-9
+            case 51: this.state2[this.keys.KEY_SELECT] = value; break; // Num-3
+            case 49: this.state2[this.keys.KEY_START] = value; break;  // Num-1
+            case 56: this.state2[this.keys.KEY_UP] = value; break;    // Num-8
+            case 50: this.state2[this.keys.KEY_DOWN] = value; break;   // Num-2
+            case 52: this.state2[this.keys.KEY_LEFT] = value; break;  // Num-4
+            case 54: this.state2[this.keys.KEY_RIGHT] = value; break; // Num-6
             default: return true;
         }
         return false; // preventDefault
+    },
+
+    onKeyEventReceived: function(data) {
+        this.setKey(data.keyCode, data.value);
     },
 
     keyDown: function(evt) {
