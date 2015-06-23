@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+
+	<title>JSNES Gamepad #1</title>
+    
+    <script src="/socket.io/socket.io.js"></script>
+
+    <style>
+    	body {
+    		background-color: black;
+    	}
+
+	    #game_div {
+	    	margin-left: -8px;
+	    	position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+	    }
+    </style>
+
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+  	<script type="text/javascript" src="js/keys1.js"></script>
+    <script type="text/javascript" src="js/gamepad.js"></script>
+</head>
+
+<body>
+	<div id="game_div"> </div>
+</body>
+
+</html>
