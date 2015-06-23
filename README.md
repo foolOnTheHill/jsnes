@@ -28,6 +28,10 @@ $ npm install
 $ node app
 ```
 
-- On your Desktop, access [localhost:3000/jsnes].
+- On your Desktop, access [http://localhost:3000/jsnes]().
 
-- On your phone, access [YOUR_IP_ADDRESS:3000/gamepad/gamepad1], the player 2 may access [YOUR_IP_ADDRESS:3000/gamepad/gamepad2]
+- On your phone, access [http://YOUR_IP_ADDRESS:3000/gamepad/1.html]().
+
+- The player 2 may access [http://YOUR_IP_ADDRESS:3000/gamepad/2.html]();
+
+- Or just access [http://localhost:3000]() and click the suitable links.
