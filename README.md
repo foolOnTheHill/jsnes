@@ -30,4 +30,4 @@ $ node app
 
 - On your Desktop, access [localhost:3000/jsnes].
 
-- On your phone, access [<YOUR IP ADDRESS>:3000/gamepad/gamepad1], the player 2 may access [<YOUR IP ADDRESS>:3000/gamepad/gamepad2]
+- On your phone, access [YOUR_IP_ADDRESS:3000/gamepad/gamepad1], the player 2 may access [YOUR_IP_ADDRESS:3000/gamepad/gamepad2]
