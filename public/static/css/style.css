@@ -1,0 +1,23 @@
+body {
+	background-color: #ccffcc;
+}
+
+.centered {
+	margin-left: -8px;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: #f6546a;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #f6546a;
+}
