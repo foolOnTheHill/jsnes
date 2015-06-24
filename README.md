@@ -35,3 +35,6 @@ $ node app
 - The player 2 may access [http://YOUR_IP_ADDRESS:3000/gamepad/2.html]();
 
 - Or just access [http://localhost:3000]() and click the suitable links.
+
+- To add ROMS, place them on ``public/jsnes/roms`` and modify ``public/jsnes/source/main.js``.
+
