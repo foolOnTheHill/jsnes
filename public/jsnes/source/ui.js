@@ -95,14 +95,7 @@ if (typeof jQuery !== 'undefined') {
         
                 self.zoomed = false;
                 self.zoom = function() {
-                    if (self.zoomed) {
-                        self.screen.animate({
-                            width: '256px',
-                            height: '240px'
-                        });
-                        self.zoomed = false;
-                    }
-                    else {
+                    if (!self.zoomed) {
                         self.screen.animate({
                             width: '768px',
                             height: '720px'
