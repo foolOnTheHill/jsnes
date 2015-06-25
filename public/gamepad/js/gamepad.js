@@ -7,7 +7,7 @@
 	}
 
 	function press(button) {
-		window.navigator.vibrate(20);
+		window.navigator.vibrate(30);
 		sendEvent({ keyCode: button,
 	                value: 0x41,
 	                type: 'keyDown'
@@ -25,8 +25,6 @@
 		preload: function() {
 			this.game.load.image('controller', 'assets/gamepad.png');
 			this.game.load.image('up', 'assets/up.png');
-			this.game.load.image('down', 'assets/down.png');
-			this.game.load.image('left', 'assets/left.png');
 			this.game.load.image('right', 'assets/right.png');
 			this.game.load.image('button', 'assets/button.png');
 			this.game.load.image('select', 'assets/select.png');
@@ -70,7 +68,7 @@
 		    this.startBtn.events.onInputDown.add(function(){ press(keys.START); });
 		    this.startBtn.events.onInputUp.add(function(){ release(keys.START); });
 
-			this.left = this.game.add.button(97*this.resize, 68*this.resize, 'left', null, this);
+			this.left = this.game.add.button(97*this.resize, 63*this.resize, 'right', null, this);
 			this.left.scale.setTo(this.resize, this.resize);
 
 			this.left.events.onInputOver.add(function(){ press(keys.LEFT); });
@@ -94,7 +92,7 @@
 		    this.up.events.onInputDown.add(function(){ press(keys.UP); });
 		    this.up.events.onInputUp.add(function(){ release(keys.UP); });
 
-			this.down = this.game.add.button(41*this.resize, 115*this.resize, 'down', null, this);
+			this.down = this.game.add.button(36*this.resize, 115*this.resize, 'up', null, this);
 			this.down.scale.setTo(this.resize, this.resize);
 
 			this.down.events.onInputOver.add(function(){ press(keys.DOWN); });
