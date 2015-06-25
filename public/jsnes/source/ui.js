@@ -100,7 +100,6 @@ if (typeof jQuery !== 'undefined') {
                             width: '256px',
                             height: '240px'
                         });
-                        self.buttons.zoom.attr("value", "zoom in");
                         self.zoomed = false;
                     }
                     else {
@@ -108,7 +107,6 @@ if (typeof jQuery !== 'undefined') {
                             width: '768px',
                             height: '720px'
                         });
-                        self.buttons.zoom.attr("value", "zoom out");
                         self.zoomed = true;
                     }
                 };
